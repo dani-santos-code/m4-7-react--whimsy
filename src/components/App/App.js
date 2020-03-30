@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import 'focus-visible';
+import React from "react";
+import styled from "styled-components";
+import "focus-visible";
 
-import avatar from '../../assets/carmen-sandiego.png';
+import avatar from "../../assets/carmen-sandiego.png";
 
-import Tweet from '../Tweet';
+import Tweet from "../Tweet";
 
 const App = () => {
   return (
