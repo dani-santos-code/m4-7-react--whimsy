@@ -3,14 +3,13 @@ import { useSpring, animated } from "react-spring";
 
 export default function ScaleIn({ children }) {
   const style = useSpring({
-    opacity: 1,
+    transform: "scale(1)",
     from: {
-      opacity: 0
+      transform: "scale(0)"
     },
     config: {
       tension: 200,
-      friction: 1,
-      clamp: true
+      friction: 12
     }
   });
   return <animated.div style={style}>{children}</animated.div>;
