@@ -25,7 +25,7 @@ const Circle = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  transform-origin: center;
+  /* transform-origin: center; */
   animation: ${popCircle} 500ms forwards;
   border-radius: 50%;
 `;

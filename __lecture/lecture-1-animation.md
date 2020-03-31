@@ -90,11 +90,11 @@ const Demo = () => {
       Click me:
       <animated.button
         style={{
-          background: 'red',
+          background: "red",
           width: 50,
           height: 50,
-          transform: toggled ? 'translateY(200px)' : 'translateY(0px)',
-          transition: 'transform 500ms',
+          transform: toggled ? "translateY(200px)" : "translateY(0px)",
+          transition: "transform 500ms"
         }}
         onClick={() => {
           setToggled(!toggled);
@@ -120,7 +120,7 @@ https://codesandbox.io/s/floral-dream-d517n
 ```jsx live=true split=[60,40]
 //  Protip: https://cubic-bezier.com/
 
-const App = ({ children = 'Hello' }) => {
+const App = ({ children = "Hello" }) => {
   return (
     <Button>
       <Surface>{children}</Surface>
@@ -183,7 +183,7 @@ const App = () => {
         <On style={{ opacity: on ? 1 : 0 }} />
         <Off />
       </BulbWrapper>
-      <button onClick={() => setOn(!on)}>Turn {on ? 'off' : 'on'}</button>
+      <button onClick={() => setOn(!on)}>Turn {on ? "off" : "on"}</button>
     </>
   );
 };
@@ -272,13 +272,13 @@ The <SpringDemo />
 ### How to use
 
 ```js
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated } from "react-spring";
 
 const Demo = () => {
   const [toggled, setToggled] = React.useState(false);
 
   const style = useSpring({
-    transform: toggled ? 'translateY(200px)' : 'translateY(0px)',
+    transform: toggled ? "translateY(200px)" : "translateY(0px)"
   });
 
   return <animated.button style={style} onClick={() => setToggled(!toggled)} />;
@@ -292,17 +292,17 @@ const Demo = () => {
   const [toggled, setToggled] = React.useState(false);
 
   const style = useSpring({
-    transform: toggled ? 'translateY(200px)' : 'translateY(0px)',
+    transform: toggled ? "translateY(200px)" : "translateY(0px)"
   });
 
   return (
     <>
       <animated.button
         style={{
-          background: 'red',
+          background: "red",
           width: 50,
           height: 50,
-          ...style,
+          ...style
         }}
         onClick={() => setToggled(!toggled)}
       />
@@ -327,21 +327,21 @@ const Demo = () => {
   const [toggled, setToggled] = React.useState(false);
 
   const style = useSpring({
-    transform: toggled ? 'translateY(200px)' : 'translateY(0px)',
+    transform: toggled ? "translateY(200px)" : "translateY(0px)",
     config: {
       tension: 200,
-      friction: 1,
-    },
+      friction: 1
+    }
   });
 
   return (
     <>
       <animated.button
         style={{
-          background: 'red',
+          background: "red",
           width: 50,
           height: 50,
-          ...style,
+          ...style
         }}
         onClick={() => setToggled(!toggled)}
       />
@@ -384,7 +384,7 @@ const App = () => {
       <Button onClick={inflateMore}>Inflate!</Button>
       <Box
         style={{
-          transform: `scale(${inflatedAmount})`,
+          transform: `scale(${inflatedAmount})`
         }}
       >
         Inflated!
@@ -428,7 +428,7 @@ const Card = ({ isVisible, children }) => {
     <CardWrapper
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0px)' : 'translateY(10px)',
+        transform: isVisible ? "translateY(0px)" : "translateY(10px)"
       }}
     >
       {children}
