@@ -10,11 +10,33 @@ const App = () => {
   const reducer = (state, action) => {
     switch (action.type) {
       case "TOGGLE-LIKE":
-        return {
-          ...state,
-          numOfLikes: state.numOfLikes + 1,
-          isLiked: !state.isLiked
-        };
+        if (state.isLiked) {
+          return {
+            ...state,
+            numOfLikes: state.numOfLikes - 1,
+            isLiked: false
+          };
+        } else {
+          return {
+            ...state,
+            numOfLikes: state.numOfLikes + 1,
+            isLiked: true
+          };
+        }
+      case "TOGGLE-RETWEET":
+        if (state.isRetweeted) {
+          return {
+            ...state,
+            numOfRetweets: state.numOfRetweets - 1,
+            isRetweeted: false
+          };
+        } else {
+          return {
+            ...state,
+            numOfRetweets: state.numOfRetweets + 1,
+            isRetweeted: true
+          };
+        }
       default:
         throw new Error("Action type not recognized");
     }
@@ -30,6 +52,10 @@ const App = () => {
     dispatch({ type: "TOGGLE-LIKE" });
   };
 
+  const toggleRetweet = () => {
+    dispatch({ type: "TOGGLE-RETWEET" });
+  };
+
   return (
     <Wrapper>
       <Tweet
@@ -43,6 +69,7 @@ const App = () => {
         isLikedByCurrentUser={state.isLiked}
         isRetweetedByCurrentUser={state.isRetweeted}
         handleToggleLike={toggleLike}
+        handleToggleRetweet={toggleRetweet}
       />
     </Wrapper>
   );
