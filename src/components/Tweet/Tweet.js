@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { format } from "date-fns";
@@ -37,12 +37,17 @@ const Tweet = ({
           <Username>@{username}</Username>
         </Name>
       </Header>
-
       <TweetContents>{tweetContents}</TweetContents>
-      <Timestamp>{format(timestamp, "HH:mm - MMM do 2020")}</Timestamp>
-
+      <Timestamp>{format(timestamp, "HH:mm - MMM do YYYY")}</Timestamp>
       <Divider />
-
+      <Stats>
+        <NumOfTweets>
+          <span>{numOfRetweets}</span> Retweets
+        </NumOfTweets>
+        <NumOfLikes>
+          <span>{numOfLikes}</span> Likes
+        </NumOfLikes>
+      </Stats>
       <Actions>
         <Action
           color="rgb(27, 149, 224)"
@@ -79,7 +84,6 @@ const Tweet = ({
           <TweetActionIcon kind="share" />
         </Action>
       </Actions>
-
       <Divider />
     </Wrapper>
   );
@@ -139,6 +143,19 @@ const Timestamp = styled.div`
 const Divider = styled.div`
   height: 1px;
   background: rgb(230, 236, 240);
+`;
+
+const NumOfTweets = styled.div`
+  padding-right: 20px;
+  span {
+    font-weight: bold;
+  }
+`;
+
+const NumOfLikes = styled.div`
+  span {
+    font-weight: bold;
+  }
 `;
 
 const Stats = styled.div`
