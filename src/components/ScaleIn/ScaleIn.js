@@ -1,20 +1,17 @@
 import React from "react";
 import { useSpring, animated } from "react-spring";
-import styled, { keyframes } from "styled-components";
 
 export default function ScaleIn({ children }) {
-  return <ScaleInStyledComponent>{children}</ScaleInStyledComponent>;
+  const style = useSpring({
+    opacity: 1,
+    from: {
+      opacity: 0
+    },
+    config: {
+      tension: 200,
+      friction: 1,
+      clamp: true
+    }
+  });
+  return <animated.div style={style}>{children}</animated.div>;
 }
-
-const scalingIn = keyframes`
-    from {
-        transform: scale(0.5)
-    }
-    to {
-        transform: scale(1)
-    }
-`;
-
-const ScaleInStyledComponent = styled.div`
-  animation: ${scalingIn} 500ms forwards;
-`;
