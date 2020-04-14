@@ -1,17 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React, { useReducer } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { format } from "date-fns";
 
-import LikeButton from '../LikeButton';
+import LikeButton from "../LikeButton";
 
-import Action from './Action';
-import TweetActionIcon from './TweetActionIcon';
+import Action from "./Action";
+import TweetActionIcon from "./TweetActionIcon";
 
 const propTypes = {
   displayName: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   avatarSrc: PropTypes.string.isRequired,
-  tweetContents: PropTypes.string.isRequired,
+  tweetContents: PropTypes.string.isRequired
 };
 
 const Tweet = ({
@@ -25,7 +26,7 @@ const Tweet = ({
   isLikedByCurrentUser,
   isRetweetedByCurrentUser,
   handleToggleLike,
-  handleToggleRetweet,
+  handleToggleRetweet
 }) => {
   return (
     <Wrapper>
@@ -36,11 +37,17 @@ const Tweet = ({
           <Username>@{username}</Username>
         </Name>
       </Header>
-
       <TweetContents>{tweetContents}</TweetContents>
-
+      <Timestamp>{format(timestamp, "HH:mm - MMM do YYYY")}</Timestamp>
       <Divider />
-
+      <Stats>
+        <NumOfTweets>
+          <span>{numOfRetweets}</span> Retweets
+        </NumOfTweets>
+        <NumOfLikes>
+          <span>{numOfLikes}</span> Likes
+        </NumOfLikes>
+      </Stats>
       <Actions>
         <Action
           color="rgb(27, 149, 224)"
@@ -59,7 +66,7 @@ const Tweet = ({
         >
           <TweetActionIcon
             kind="retweet"
-            color={isRetweetedByCurrentUser ? 'rgb(23, 191, 99)' : undefined}
+            color={isRetweetedByCurrentUser ? "rgb(23, 191, 99)" : undefined}
           />
         </Action>
 
@@ -77,7 +84,6 @@ const Tweet = ({
           <TweetActionIcon kind="share" />
         </Action>
       </Actions>
-
       <Divider />
     </Wrapper>
   );
@@ -89,8 +95,8 @@ const Wrapper = styled.div`
   padding: 16px;
   text-align: left;
   /* padding-bottom: 0; */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Ubuntu, 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", sans-serif;
 `;
 
 const Header = styled.header`
@@ -137,6 +143,19 @@ const Timestamp = styled.div`
 const Divider = styled.div`
   height: 1px;
   background: rgb(230, 236, 240);
+`;
+
+const NumOfTweets = styled.div`
+  padding-right: 20px;
+  span {
+    font-weight: bold;
+  }
+`;
+
+const NumOfLikes = styled.div`
+  span {
+    font-weight: bold;
+  }
 `;
 
 const Stats = styled.div`
